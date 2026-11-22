@@ -128,8 +128,9 @@ Nautilus is a lightweight and free tool that using PowerShell that allows you to
 3. Temporarily allow script execution by running:
    ```PowerShell
    Set-ExecutionPolicy Unrestricted -Scope Process -Force
-4. Follow the instructions
-5. Sit back and let the tool do it
+5. Run the scripts (e.g. C:\NautilusNZZT.ps1)
+5. Follow the instructions
+6. Sit back and let the tool do it
 
 ## License
 Nautilus is licensed under the GPLv3 license. See the LICENSE file for more information.
