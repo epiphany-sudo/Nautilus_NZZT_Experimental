@@ -17,7 +17,7 @@ Nautilus is a lightweight and free tool that using PowerShell that allows you to
 
 > This script in this repo is experimental, if you're looking the main repo, take a look at this [link](https://github.com/PastelPinkLab/Nautilus_NZZT)
 
-## What things will be removed (Scanned in Windows 11 26H2)
+## What things will be removed (Scanned in Windows 11 26H2) [Old lists]
 
 #### APPXs
 - Clipchamp.Clipchamp
