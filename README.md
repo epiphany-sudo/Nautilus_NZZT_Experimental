@@ -19,7 +19,7 @@ Nautilus is a lightweight, standalone PowerShell all-in-one ISO builder that all
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 ### Flexible Windows 11/10 supports and auto-converting ESD to WIM
 * **Windows 11/10 Compatibility:** Automatically detects **Windows 10**, **Windows 11**, and **LTSC / IoT LTSC** (`EnterpriseS`, including LTSC 2019 `ReleaseId` builds).
@@ -41,7 +41,7 @@ Nautilus is a lightweight, standalone PowerShell all-in-one ISO builder that all
 
 ---
 
-## 🧹 What Gets Removed & Kept
+## What Gets Removed & Kept
 
 #### Provisioned UWP / AppX Packages (Allowlist-Based)
 * `Microsoft.WindowsStore`, `Microsoft.StorePurchaseApp`, `Microsoft.Services.Store.Engagement`
@@ -67,14 +67,14 @@ After running `DISM /StartComponentCleanup /ResetBase` to keep WinSxS clean, Nau
 
 ---
 
-## ⚙️ System Tweaks & Hardening
+## System Tweaks & Hardening
 
 * **OOBE & Local Accounts:** Enables `BypassNRO`, skips Wi-Fi setup.
 * **Privacy & IFEO Telemetry Blocking:** Disables Telemetry (`AllowTelemetry = 0`), Advertising ID, Tailored Experiences, and Online Speech/Inking/Typing data collection.
 * **AI, Search & Taskbar:** Disables Windows Copilot, Recall & AI data analysis, Bing web search, Dynamic Search Highlights, News & Interests/Feeds, Chat icon, Widgets, Start Iris recommendations, and default Start Menu pins.
 * **System & QOL:** Disables BitLocker, Hibernation, Reserved Storage, Delivery Optimization, global background UWP apps, Sticky Keys, and Explorer folder-type discovery (`UsrClass.dat`). Unlocks DMA Region Policy (`IntegratedServicesRegionPolicySet.json`).
-* **Forced App Blocking:** Preventing Windows Update/OOBE from silently installing Outlook, DevHome, Teams, and Windows Mail.
-* **Services & Scheduled Tasks:** Disables 16 unnecessary background services (`SysMain`, `DiagTrack`, `UCPD`, `TrkWks`, `MapsBroker`, `wisvc`, `RemoteRegistry`, `GameBarPresenceWriter`, etc.) and deletes 15 telemetry scheduled tasks (`Microsoft Compatibility Appraiser`, `UCPD velocity`, `CEIP`, `WinSAT`, `QueueReporting`, etc.).
+* **Forced App Blocking:** Preventing Windows Update/OOBE from installing Outlook, DevHome, Teams, and Windows Mail.
+* **Services & Scheduled Tasks:** Disables unnecessary background services (`SysMain`, `DiagTrack`, `UCPD`, `TrkWks`, `MapsBroker`, `wisvc`, `RemoteRegistry`, `GameBarPresenceWriter`, etc.) and deletes telemetry scheduled tasks (`Microsoft Compatibility Appraiser`, `UCPD velocity`, `CEIP`, `WinSAT`, `QueueReporting`, etc.).
 
 ---
 
