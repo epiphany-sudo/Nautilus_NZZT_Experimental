@@ -802,7 +802,7 @@ if (-not $DriveLetter) {
 }
 
 Write-StepInfo "Copying ISO contents from ${DriveLetter}:\ to workspace..."
-robocopy "${DriveLetter}:\" "$ExtractDir" /E /MT:8 /NFL /NDL /NJH /NJS /nc /ns /np
+robocopy "${DriveLetter}:\" "$ExtractDir" /E /MT:8 /A-:R /NFL /NDL /NJH /NJS /nc /ns /np
 $RoboCode = $LASTEXITCODE
 Dismount-DiskImage -ImagePath $IsoPath | Out-Null
 
@@ -1667,7 +1667,7 @@ if ($NeedBootPatch) {
 }
 
 # ==============================================================================
-# [14/15] Integraing OS-Specific autounattend.xml & Offline Post-Install ($OEM$)
+# [14/15] Integrating OS-Specific autounattend.xml & Offline Post-Install ($OEM$)
 # ==============================================================================
 Write-Phase 14 "Generating $OsFamily autounattend.xml & post-install bundle"
 
@@ -1790,8 +1790,13 @@ $XmlWin10 = @'
 </unattend>
 '@
 
-$SelectedXml = if ($IsWin11) { $XmlWin11 } else { $XmlWin10 }
-[System.IO.File]::WriteAllText("$ExtractDir\autounattend.xml", $SelectedXml, (New-Object System.Text.UTF8Encoding $false))
+$SelectedXml  = if ($IsWin11) { $XmlWin11 } else { $XmlWin10 }
+$UnattendPath = "$ExtractDir\autounattend.xml"
+if (Test-Path -LiteralPath $UnattendPath) {
+    attrib.exe -R -H -S "$UnattendPath" 2>$null | Out-Null
+    Set-ItemProperty -LiteralPath $UnattendPath -Name IsReadOnly -Value $false -ErrorAction SilentlyContinue
+}
+[System.IO.File]::WriteAllText($UnattendPath, $SelectedXml, (New-Object System.Text.UTF8Encoding $false))
 Write-StepOk "Generated autounattend.xml ($OsFamily profile)."
 
 if ($BrowserChoice -ne "0" -or $UseVcRedist) {
@@ -1891,7 +1896,12 @@ if ($BrowserChoice -ne "0" -or $UseVcRedist) {
 
     $SetupCmdLines += 'echo done>"%~dp0nautilus.done"'
     $SetupCmdLines += 'exit /b 0'
-    [System.IO.File]::WriteAllLines((Join-Path $OemScriptsDir "SetupComplete.cmd"), $SetupCmdLines, (New-Object System.Text.UTF8Encoding $false))
+    $SetupCompletePath = Join-Path $OemScriptsDir "SetupComplete.cmd"
+    if (Test-Path -LiteralPath $SetupCompletePath) {
+        attrib.exe -R -H -S "$SetupCompletePath" 2>$null | Out-Null
+        Set-ItemProperty -LiteralPath $SetupCompletePath -Name IsReadOnly -Value $false -ErrorAction SilentlyContinue
+    }
+    [System.IO.File]::WriteAllLines($SetupCompletePath, $SetupCmdLines, (New-Object System.Text.UTF8Encoding $false))
     Write-StepOk "SetupComplete.cmd staged in `$OEM` (with FirstLogon OEM-key fallback)."
 }
 
