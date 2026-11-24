@@ -8,7 +8,7 @@ Nautilus NZZT Experimental Source
 
 </h1> 
 
-Nautilus is a lightweight, standalone PowerShell all-in-one ISO builder that allows you to debloat, update, customize, and repackage Windows ISOs easily. **NZZT** is the next fork heavily based on [Nautilus](https://github.com/PastelPinkLab/Nautilus) and [tiny11maker](https://github.com/ntdevlabs/tiny11builder), compatible with **Windows 10, Windows 11, and LTSC / IoT LTSC** (Long-Term Servicing Channel).
+Nautilus is a lightweight, standalone PowerShell all-in-one ISO builder that allows you to debloat, update Windows ISOs easily. **NZZT** is the next fork heavily based on [Nautilus](https://github.com/PastelPinkLab/Nautilus) and [tiny11maker](https://github.com/ntdevlabs/tiny11builder), compatible with **Windows 10, Windows 11, and LTSC / IoT LTSC** (Long-Term Servicing Channel).
 
 ## ⚠️ Disclaimer
 
@@ -97,7 +97,7 @@ After running `DISM /StartComponentCleanup /ResetBase` to keep WinSxS clean, Nau
 6. Sit back and let the tool do it
 
 ## License
-Nautilus is licensed under the GPLv3 license. See the LICENSE file for more information.
+- Not available
 
 ## Credits
 - [NTDEV](https://github.com/ntdevlabs) for creating and hosting Tiny11Builder
